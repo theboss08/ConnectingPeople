@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="./css/app.css" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -26,6 +27,8 @@
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                        <span id="postMenu">
+                        </span>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
 
@@ -36,6 +39,11 @@
                 </div>
             @endif
         </div>
+
+        @if (session('status'))
+            <div id="snackbarsuccess" data-severity="success" data-status="{{session('status')}}" ></div>
+        @endif
+        
         <script src="./js/app.js"></script>
     </body>
 </html>

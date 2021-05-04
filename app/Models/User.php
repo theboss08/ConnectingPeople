@@ -54,4 +54,14 @@ class User extends Authenticatable
     public function profile(){
         return $this->hasOne(Profile::class);
     }
+
+    public function textPost(){
+        return $this->hasMany(TextPost::class)->orderBy('created_at', 'DESC');
+    }
+    public function imagePost(){
+        return $this->hasMany(ImagePost::class)->orderBy('created_at', 'DESC');
+    }
+    public function videoPost(){
+        return $this->hasMany(VideoPost::class)->orderBy('created_at', 'DESC');
+    }
 }

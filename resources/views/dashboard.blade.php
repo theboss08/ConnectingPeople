@@ -1,10 +1,12 @@
 <x-app-layout>
+    <link rel="stylesheet" href="./css/app.css">
     <x-slot name="header">
-        <div class="d-flex justify-content-between">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+    <h2 class="mb-5"><a href="/">Go To Home</a></h2>
+        <div class="profile d-flex justify-content-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile') }}
-        </h2>
-        <a class="font-semibold text-xl  leading-tight" href="/edit">Edit Profile</a>
+            </h2>
+            <h2><a class="font-semibold text-xl  leading-tight" href="/edit">Edit Profile</a></h2>
         </div>
     </x-slot>
 
@@ -26,12 +28,43 @@
                     <div>Works At {{$user->profile->workplace}} </div>
                 @endif
                 @if($user->profile->relationship)
-                <div>Relationship Status {{$user->profile->relationship}} </div>
+                <div>Relationship {{$user->profile->relationship}} </div>
                 @endif
                 @if ($user->profile->hobbies)
                     <div> Likes to {{$user->profile->hobbies}} </div>
                 @endif
+                </div>
+
+
+                <div class="p-6 bg-white border-b border-gray-200">
+                Your Text Posts Total : {{$user->textPost->count()}}
+                @foreach ($user->textPost as $post)
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight">{{$post->caption}}</h1>
+                        <div>
+                        {{$post->post_body}}
+                        </div>
+                    </div>
+                @endforeach
+                </div>
+
+                <div class="p-6 bg-white border-b border-gray-200">
+                Your Image Posts Total : {{$user->imagePost->count()}}
+                @foreach ($user->imagePost as $post)
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight">{{$post->caption}}</h1>
+                        <div>
+                        <img src="/storage/{{$post->image_url}}" alt="">
+                        </div>
+                    </div>
+                @endforeach
+                </div>
+
             </div>
         </div>
     </div>
+
+
+
+    <script src="./js/app.js"></script>
 </x-app-layout>
