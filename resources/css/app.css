@@ -6,3 +6,8 @@
     display: flex;
     justify-content: space-between;
 }
+
+.friend_requests > a{
+    color: blue;
+    text-decoration: underline;
+}

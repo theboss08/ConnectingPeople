@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\user;
 
 class ProfileController extends Controller
 {
@@ -31,5 +32,10 @@ class ProfileController extends Controller
         ]);
         $user->profile->update($data);
         return redirect('/dashboard');
+    }
+
+    public function show(Request $request, $id){
+        $user = User::findOrFail($id);
+        return view('profile', ['user' => $user]);
     }
 }

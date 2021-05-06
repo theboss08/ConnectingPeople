@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +22,17 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [ProfileController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
+Route::get('/profile/{id}', [ProfileController::class, 'show'])->middleware(['auth'])->name('profile');
+
 Route::get('/edit', [ProfileController::class, 'edit'])->middleware(['auth'])->name('profile_edit');
 
 Route::patch('/edit', [ProfileController::class, 'update'])->middleware(['auth']);
 
 Route::post('/post/create/{type}', [PostController::class, 'create'])->middleware(['auth']);
+
+Route::get('/notification', [NotificationController::class, 'index'])->middleware(['auth'])->name('notification');
+
+Route::post('/notification', [NotificationController::class, 'store'])->middleware(['auth']);
 
 Route::get('/post/text', function() {
     return view('/post/text_post');
@@ -35,8 +42,8 @@ Route::get('/post/image', function() {
     return view('/post/image_post');
 })->middleware(['auth']);
 
-Route::get('/post/video', function() {
-    return view('/post/video_post');
-})->middleware(['auth']);
+// Route::get('/post/video', function() {
+//     return view('/post/video_post');
+// })->middleware(['auth']);
 
 require __DIR__.'/auth.php';

@@ -32093,6 +32093,11 @@ select {
   justify-content: space-between;
 }
 
+.friend_requests > a{
+  color: blue;
+  text-decoration: underline;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
