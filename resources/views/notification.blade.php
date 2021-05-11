@@ -18,6 +18,20 @@
                 @foreach ($users as $user)
                     <div class="friend_requests">
                         <a href="/profile/{{$user->id}}">{{$user->name}}</a> has sent you a friend request.
+                        <form method="post" action="/accept_request">
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" value={{$user->id}} name="user_id_1" />
+                            <input type="hidden" value={{Auth::user()->id}} name="user_id_2" />
+                            <input type="submit" name="accept_request"/ value="Accept" />
+                        </form>
+                        <form method="post" action="/reject_request">
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" value={{$user->id}} name="user_id_1" />
+                            <input type="hidden" value={{Auth::user()->id}} name="user_id_2" />
+                            <input type="submit" name="reject_request"/ value="Reject" />
+                        </form>
                     </div>
                 @endforeach
             </div>

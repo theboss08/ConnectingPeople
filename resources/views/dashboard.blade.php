@@ -35,6 +35,15 @@
                 @endif
                 </div>
 
+                <div class="p-6 bg-white border-b border-gray-200">
+                Your Friends 
+                @foreach ($friends as $friend)
+                <div class="p-6 bg-white">
+                        <a href="/profile/{{$friend->id}}" class="text-blue-500">{{$friend->name}}</a>
+                    </div>
+                @endforeach
+                </div>
+
 
                 <div class="p-6 bg-white border-b border-gray-200">
                 Your Text Posts Total : {{$user->textPost->count()}}

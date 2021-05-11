@@ -5,11 +5,39 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TextPost;
 use App\Models\ImagePost;
+use App\Models\Friends;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
+
+    public function index(Request $request){
+        $friends1 = Friends::where('user_id_1', Auth::user()->id)->get();
+        $friends2 = Friends::where('user_id_2', Auth::user()->id)->get();
+        $friends = [];
+        foreach($friends1 as $fr){
+            array_push($friends, User::find($fr->user_id_2));
+        }
+        foreach($friends2 as $fr){
+            array_push($friends, User::find($fr->user_id_1));
+        }
+        $imagePosts = [];
+        $textPosts = [];
+        foreach($friends as $frs){
+            foreach($frs->imagePost as $ip){
+                array_push($imagePosts, $ip);
+            }
+        }
+        foreach($friends as $frs){
+            foreach($frs->textPost as $ip){
+                array_push($textPosts, $ip);
+            }
+        }
+        return view('welcome', ['imagePosts' => $imagePosts, 'textPosts' => $textPosts]);
+    }
+
     public function create(Request $request, $type){
         if($type === 'text'){
             $request->validate([

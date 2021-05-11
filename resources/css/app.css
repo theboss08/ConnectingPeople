@@ -11,3 +11,7 @@
     color: blue;
     text-decoration: underline;
 }
+
+.image_post{
+    max-width: 300px;
+}

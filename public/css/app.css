@@ -32098,6 +32098,10 @@ select {
   text-decoration: underline;
 }
 
+.image_post{
+  max-width: 300px;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

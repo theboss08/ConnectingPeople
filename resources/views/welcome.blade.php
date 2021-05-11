@@ -22,7 +22,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <div class="relative flex items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -39,6 +39,30 @@
                 </div>
             @endif
         </div>
+
+        <div class="p-6 bg-white border-b border-gray-200">
+                @foreach ($textPosts as $post)
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight">{{$post->caption}}</h1>
+                        <div>
+                        {{$post->post_body}}
+                        </div>
+                        <div>Posted By : <a class="text-blue-500" href="/profile/{{$post->user->id}}">{{$post->user->name}}</a> </div>
+                    </div>
+                @endforeach
+                </div>
+
+            <div class="p-6 bg-white border-b border-gray-200">
+            @foreach ($imagePosts as $post)
+                <div class="d-flex justify-content-center p-6 bg-white border-b border-gray-200">
+                    <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight">{{$post->caption}}</h1>
+                    <div>
+                    <img class="image_post" src="/storage/{{$post->image_url}}" alt="">
+                    </div>
+                    <div class="mt-5">Posted By : <a class="text-blue-500" href="/profile/{{$post->user->id}}">{{$post->user->name}}</a> </div>
+                </div>
+            @endforeach
+            </div>
 
         @if (session('status'))
             <div id="snackbarsuccess" data-severity="success" data-status="{{session('status')}}" ></div>
