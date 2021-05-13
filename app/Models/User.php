@@ -64,4 +64,12 @@ class User extends Authenticatable
     public function videoPost(){
         return $this->hasMany(VideoPost::class)->orderBy('created_at', 'DESC');
     }
+
+    public function textComment(){
+        return $this->hasMany(TextComment::class)->orderBy('created_at', 'DESC');
+    }
+
+    public function imageComment(){
+        return $this->hasMany(ImageComment::class)->orderBy('created_at', 'DESC');
+    }
 }

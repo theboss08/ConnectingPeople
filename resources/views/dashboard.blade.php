@@ -49,7 +49,7 @@
                 Your Text Posts Total : {{$user->textPost->count()}}
                 @foreach ($user->textPost as $post)
                     <div class="p-6 bg-white border-b border-gray-200">
-                        <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight">{{$post->caption}}</h1>
+                        <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight"> <a href="/text/{{$post->id}}">{{$post->caption}}</a> </h1>
                         <div>
                         {{$post->post_body}}
                         </div>
@@ -61,7 +61,7 @@
                 Your Image Posts Total : {{$user->imagePost->count()}}
                 @foreach ($user->imagePost as $post)
                     <div class="p-6 bg-white border-b border-gray-200">
-                        <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight">{{$post->caption}}</h1>
+                        <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight"><a href="/text/{{$post->id}}">{{$post->caption}}</a></h1>
                         <div>
                         <img src="/storage/{{$post->image_url}}" alt="">
                         </div>

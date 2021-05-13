@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\FriendsController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,11 @@ use App\Http\Controllers\FriendsController;
 
 Route::get('/', [PostController::class, 'index'])->middleware(['auth'])->name('home_page');
 
-Route::get('/dashboard', [ProfileController::class, 'index'])->middleware(['auth'])->name('dashboard');
-
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->middleware(['auth'])->name('profile');
+
+Route::post('/comment/{type}', [CommentController::class, 'store'])->middleware(['auth']);
+
+Route::get('/dashboard', [ProfileController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/edit', [ProfileController::class, 'edit'])->middleware(['auth'])->name('profile_edit');
 
@@ -44,5 +47,7 @@ Route::get('/post/text', function() {
 Route::get('/post/image', function() {
     return view('/post/image_post');
 })->middleware(['auth']);
+
+Route::get('/{type}/{id}', [PostController::class, 'show'])->middleware(['auth']);
 
 require __DIR__.'/auth.php';

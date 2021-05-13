@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ImagePost extends Model
+class ImageComment extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
 
     public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function imageComment(){
-        return $this->hasMany(ImageComment::class)->orderBy('created_at', 'DESC');
+    public function imagePost(){
+        return $this->belongsTo(ImagePost::class);
     }
 }

@@ -38,6 +38,17 @@ class PostController extends Controller
         return view('welcome', ['imagePosts' => $imagePosts, 'textPosts' => $textPosts]);
     }
 
+    public function show(Request $request, $type, $id){
+        if($type === 'text'){
+            $post = TextPost::findOrFail($id);
+            return view('post.view_text', ['post' => $post]);
+        }
+        else if($type === 'image'){
+            $post = ImagePost::findOrFail($id);
+            return view('post.view_image', ['post' => $post]);
+        }
+    }
+
     public function create(Request $request, $type){
         if($type === 'text'){
             $request->validate([

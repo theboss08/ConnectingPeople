@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>ConnectingPeople</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
         <div class="p-6 bg-white border-b border-gray-200">
                 @foreach ($textPosts as $post)
                     <div class="p-6 bg-white border-b border-gray-200">
-                        <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight">{{$post->caption}}</h1>
+                        <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight"> <a href="/text/{{$post->id}}">{{$post->caption}}</a> </h1>
                         <div>
                         {{$post->post_body}}
                         </div>
@@ -55,7 +55,7 @@
             <div class="p-6 bg-white border-b border-gray-200">
             @foreach ($imagePosts as $post)
                 <div class="d-flex justify-content-center p-6 bg-white border-b border-gray-200">
-                    <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight">{{$post->caption}}</h1>
+                    <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight"> <a href="/image/{{$post->id}}">{{$post->caption}}</a> </h1>
                     <div>
                     <img class="image_post" src="/storage/{{$post->image_url}}" alt="">
                     </div>

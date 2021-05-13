@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ImagePost extends Model
+class TextComment extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class ImagePost extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function imageComment(){
-        return $this->hasMany(ImageComment::class)->orderBy('created_at', 'DESC');
+    public function textPost(){
+        return $this->belongsTo(TextPost::class);
     }
 }
