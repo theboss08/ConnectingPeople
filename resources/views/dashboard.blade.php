@@ -10,6 +10,9 @@
         </div>
     </x-slot>
 
+   
+
+    <x-slot name="slot">
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -38,8 +41,9 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                 Your Friends 
                 @foreach ($friends as $friend)
-                <div class="p-6 bg-white">
-                        <a href="/profile/{{$friend->id}}" class="text-blue-500">{{$friend->name}}</a>
+                    <div class="p-6 bg-white">
+                        <a href="/profile/{{$friend->id}}" class="text-blue-500 pr-4">{{$friend->name}}</a>
+                        <a href="/chat/{{$friend->id}}" class="text-500">Send Message</a>
                     </div>
                 @endforeach
                 </div>
@@ -63,7 +67,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight"><a href="/text/{{$post->id}}">{{$post->caption}}</a></h1>
                         <div>
-                        <img src="/storage/{{$post->image_url}}" alt="">
+                        <img class="image_post" src="/storage/{{$post->image_url}}" alt="">
                         </div>
                     </div>
                 @endforeach
@@ -72,8 +76,10 @@
             </div>
         </div>
     </div>
+    <script src="../js/app.js"></script>
+    </x-slot>
 
 
 
-    <script src="./js/app.js"></script>
+    
 </x-app-layout>

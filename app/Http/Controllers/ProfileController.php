@@ -48,6 +48,7 @@ class ProfileController extends Controller
 
     public function show(Request $request, $id){
         $user = User::findOrFail($id);
-        return view('profile', ['user' => $user]);
+        $count = Friends::where('user_id_1', min(Auth::user()->id, $id))->where('user_id_2', max(Auth::user()->id, $id))->count();
+        return view('profile', ['user' => $user, 'count' => $count]);
     }
 }

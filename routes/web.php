@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\FriendsController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,10 @@ Route::post('/notification', [NotificationController::class, 'store'])->middlewa
 Route::post('/accept_request', [FriendsController::class, 'accept'])->middleware(['auth']);
 
 Route::post('/reject_request', [FriendsController::class, 'request'])->middleware(['auth']);
+
+Route::get('/chat/{user_id_2}', [ChatController::class, 'show'])->middleware(['auth'])->name('chat');
+Route::get('chat/messages/{user_id_2}', [ChatController::class, 'messages'])->middleware(['auth']);
+Route::post('/chat/message/{user_id_2}', [ChatController::class, 'newMessage'])->middleware(['auth']);
 
 Route::get('/post/text', function() {
     return view('/post/text_post');

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>ConnectingPeople</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -18,15 +18,6 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
-            }
-            .name{
-                font-size: 30px;
-                margin-bottom : 20px;
-            }
-            .button_container{
-                display : flex;
-                justify-content : space-between;
-                align-items : center;
             }
         </style>
     </head>
@@ -49,63 +40,12 @@
             @endif
         </div>
 
-
         <div class="py-12">
-        
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                <div class="button_container">
-                <div class="name">{{$user->name}}</div>
-                @if($count === 0) <div data-sent_by={{Auth::user()->id}} data-sent_to={{$user->id}} id="friend_button"></div>
-                @endif
+                <div id="chat_box" data-user_id_1={{Auth::user()->id}} data-user_id_2={{$user_id_2}}></div>
                 </div>
-                {{$user->profile->bio}}
-                @if ($user->profile->education)
-                    <div>Studied At {{$user->profile->education}}</div>
-                @endif
-                @if ($user->profile->current_address)
-                    <div>Lives In {{$user->profile->current_address}}</div>
-                @endif
-                @if ($user->profile->from_address)
-                    <div>From {{$user->profile->from_address}} </diV>
-                @endif
-                @if ($user->profile->workplace)
-                    <div>Works At {{$user->profile->workplace}} </div>
-                @endif
-                @if($user->profile->relationship)
-                <div>Relationship {{$user->profile->relationship}} </div>
-                @endif
-                @if ($user->profile->hobbies)
-                    <div> Likes to {{$user->profile->hobbies}} </div>
-                @endif
-                </div>
-
-
-                <div class="p-6 bg-white border-b border-gray-200">
-                Text Posts Total : {{$user->textPost->count()}}
-                @foreach ($user->textPost as $post)
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight"><a href="/text/{{$post->id}}">{{$post->caption}}</a></h1>
-                        <div>
-                        {{$post->post_body}}
-                        </div>
-                    </div>
-                @endforeach
-                </div>
-
-                <div class="p-6 bg-white border-b border-gray-200">
-                Image Posts Total : {{$user->imagePost->count()}}
-                @foreach ($user->imagePost as $post)
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight"><a href="/image/{{$post->id}}">{{$post->caption}}</a></h1>
-                        <div>
-                        <img class="image_post" src="/storage/{{$post->image_url}}" alt="">
-                        </div>
-                    </div>
-                @endforeach
-                </div>
-
             </div>
         </div>
     </div>
