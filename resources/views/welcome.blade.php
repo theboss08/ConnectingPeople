@@ -23,6 +23,12 @@
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+            <div class="hidden fixed top-0 px-6 py-4 sm:block">
+                <form method="get" action="/search">
+                    <input type="text" name="name" style="width: 500px;height: 30px;">
+                    <input type="submit" value="Search" style="background: grey;padding: 4px 20px;color: white">
+                </form>
+            </div>
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth

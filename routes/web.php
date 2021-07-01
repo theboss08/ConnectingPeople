@@ -7,6 +7,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\FriendsController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,8 @@ Route::post('/notification', [NotificationController::class, 'store'])->middlewa
 Route::post('/accept_request', [FriendsController::class, 'accept'])->middleware(['auth']);
 
 Route::post('/reject_request', [FriendsController::class, 'request'])->middleware(['auth']);
+
+Route::get('/search', [SearchController::class, 'index'])->middleware(['auth']);
 
 Route::get('/chat/{user_id_2}', [ChatController::class, 'show'])->middleware(['auth'])->name('chat');
 Route::get('chat/messages/{user_id_2}', [ChatController::class, 'messages'])->middleware(['auth']);
