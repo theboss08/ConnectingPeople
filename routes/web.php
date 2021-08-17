@@ -8,6 +8,7 @@ use App\Http\Controllers\FriendsController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,20 +35,27 @@ Route::patch('/edit', [ProfileController::class, 'update'])->middleware(['auth']
 
 Route::post('/post/create/{type}', [PostController::class, 'create'])->middleware(['auth']);
 
-Route::get('/notification', [NotificationController::class, 'index'])->middleware(['auth'])->name('notification');
 
+// Notification Routes
+Route::get('/notification', [NotificationController::class, 'index'])->middleware(['auth'])->name('notification');
 Route::post('/notification', [NotificationController::class, 'store'])->middleware(['auth']);
 
-Route::post('/accept_request', [FriendsController::class, 'accept'])->middleware(['auth']);
 
+// Request handling routes
+Route::post('/accept_request', [FriendsController::class, 'accept'])->middleware(['auth']);
 Route::post('/reject_request', [FriendsController::class, 'request'])->middleware(['auth']);
 
+
+// Searching people route
 Route::get('/search', [SearchController::class, 'index'])->middleware(['auth']);
 
+
+//Chat Routes
 Route::get('/chat/{user_id_2}', [ChatController::class, 'show'])->middleware(['auth'])->name('chat');
 Route::get('chat/messages/{user_id_2}', [ChatController::class, 'messages'])->middleware(['auth']);
 Route::post('/chat/message/{user_id_2}', [ChatController::class, 'newMessage'])->middleware(['auth']);
 
+// Route for getting posts
 Route::get('/post/text', function() {
     return view('/post/text_post');
 })->middleware(['auth']);
@@ -56,6 +64,11 @@ Route::get('/post/image', function() {
     return view('/post/image_post');
 })->middleware(['auth']);
 
+// Like Controller Routes
+Route::post('/like/{type}', [LikeController::class, 'index'])->middleware(['auth']);
+
+
+// route for showing post
 Route::get('/{type}/{id}', [PostController::class, 'show'])->middleware(['auth']);
 
 require __DIR__.'/auth.php';

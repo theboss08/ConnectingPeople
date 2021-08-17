@@ -18,4 +18,12 @@ class TextPost extends Model
     public function textComment(){
         return $this->hasMany(TextComment::class)->orderBy('created_at', 'DESC');
     }
+
+    public function textPostLikes(){
+        return $this->hasMany(TextPostLikes::class);
+    }
+
+    public function textPostDislikes(){
+        return $this->hasMany(TextPostDislikes::class);
+    }
 }

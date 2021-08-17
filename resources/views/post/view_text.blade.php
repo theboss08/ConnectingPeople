@@ -19,6 +19,11 @@
                     {{$post->post_body}}
                     </div>
                     <div>Posted By : <a class="text-blue-500" href="/profile/{{$post->user->id}}">{{$post->user->name}}</a> </div>
+                    <span data-liked={{$post->textPostLikes->where('user_id', Auth::user()->id)->count()}} data-disliked={{$post->textPostDislikes->where('user_id', Auth::user()->id)->count()}} data-text_post="true" data-post_id={{$post->id}} id="like_button"></span>
+                    <div>
+                        <span data-liked="false" class="ml-1 mr-8">{{ $post->textPostLikes->count() }}</span>
+                        <span data-disliked="false">{{ $post->textPostDislikes->count() }}</span>
+                    </div>
                 </div>
                 <div class="add_comment">
                 <form action="/comment/text" method="post">
@@ -51,6 +56,4 @@
     @if (session('status'))
             <div id="snackbarsuccess" data-severity="success" data-status="{{session('status')}}" ></div>
         @endif
-
-    <script src="../js/app.js"></script>
 </x-app-layout>

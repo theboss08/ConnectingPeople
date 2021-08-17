@@ -72,4 +72,20 @@ class User extends Authenticatable
     public function imageComment(){
         return $this->hasMany(ImageComment::class)->orderBy('created_at', 'DESC');
     }
+
+    public function textPostLike(){
+        return $this->hasMany(TextPostLike::class);
+    }
+
+    public function textPostDislike(){
+        return $this->hasMany(TextPostDislike::class);
+    }
+
+    public function imagePostLike(){
+        return $this->hasMany(ImagePostLike::class);
+    }
+
+    public function imagePostDislike(){
+        return $this->hasMany(ImagePostDislike::class);
+    }
 }

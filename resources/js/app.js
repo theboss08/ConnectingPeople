@@ -7,3 +7,4 @@ require('./components/PostMenu.js');
 require('./components/SnackBarSuccess.js');
 require('./components/FriendRequest.js');
 require('./components/ChatBox');
+require('./components/LikeButton');

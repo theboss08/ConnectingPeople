@@ -19,6 +19,11 @@
                     <img class="image_post" src="/storage/{{$post->image_url}}" alt="">
                     </div>
                     <div class="mt-5">Posted By : <a class="text-blue-500" href="/profile/{{$post->user->id}}">{{$post->user->name}}</a> </div>
+                    <span data-liked={{$post->imagePostLikes->where('user_id', Auth::user()->id)->count()}} data-disliked={{$post->imagePostDislikes->where('user_id', Auth::user()->id)->count()}} data-text_post="false" data-post_id={{$post->id}} id="like_button"></span>
+                    <div>
+                        <span class="ml-1 mr-8">{{ $post->imagePostLikes->count() }}</span>
+                        <span>{{ $post->imagePostDislikes->count() }}</span>
+                    </div>
                 </div>
                 <div class="add_comment">
                 <form action="/comment/image" method="post">
@@ -52,7 +57,5 @@
             <div id="snackbarsuccess" data-severity="success" data-status="{{session('status')}}" ></div>
         @endif
 
-
-
-    <script src="../js/app.js"></script>
+    
 </x-app-layout>
