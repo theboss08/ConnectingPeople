@@ -31,7 +31,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <div class="relative flex items-top justify-center sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -62,19 +62,19 @@
                 </div>
                 {{$user->profile->bio}}
                 @if ($user->profile->education)
-                    <div>Studied At {{$user->profile->education}}</div>
+                    <div>Studied At : {{$user->profile->education}}</div>
                 @endif
                 @if ($user->profile->current_address)
-                    <div>Lives In {{$user->profile->current_address}}</div>
+                    <div>Lives In : {{$user->profile->current_address}}</div>
                 @endif
                 @if ($user->profile->from_address)
-                    <div>From {{$user->profile->from_address}} </diV>
+                    <div>From : {{$user->profile->from_address}} </diV>
                 @endif
                 @if ($user->profile->workplace)
-                    <div>Works At {{$user->profile->workplace}} </div>
+                    <div>Works At : {{$user->profile->workplace}} </div>
                 @endif
                 @if($user->profile->relationship)
-                <div>Relationship {{$user->profile->relationship}} </div>
+                <div>Relationship Status : {{$user->profile->relationship}} </div>
                 @endif
                 @if ($user->profile->hobbies)
                     <div> Likes to {{$user->profile->hobbies}} </div>

@@ -35,7 +35,16 @@ class PostController extends Controller
                 array_push($textPosts, $ip);
             }
         }
-        return view('welcome', ['imagePosts' => $imagePosts, 'textPosts' => $textPosts]);
+        $people = [];
+        foreach(User::all() as $user) {
+            array_push($people, $user);
+        }
+        shuffle($people);
+        $random_people = [];
+        for($i = 0;$i<min(sizeof($people), 10);$i++) {
+            array_push($random_people, $people[$i]);
+        }
+        return view('welcome', ['imagePosts' => $imagePosts, 'textPosts' => $textPosts, 'random_people' => $random_people]);
     }
 
     public function show(Request $request, $type, $id){

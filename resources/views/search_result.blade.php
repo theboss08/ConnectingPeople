@@ -13,6 +13,10 @@
    
 
     <x-slot name="slot">
+    <form method="get" action="/search" style="display:flex;justify-content:center;margin-top : 20px">
+                    <input placeholder="Enter Username" type="text" name="name" style="width: 500px;height: 30px;">
+                    <input type="submit" value="Search" style="background: grey;padding: 4px 20px;color: white">
+                </form>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">

@@ -19,22 +19,22 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                 {{$user->profile->bio}}
                 @if ($user->profile->education)
-                    <div>Studied At {{$user->profile->education}}</div>
+                    <div style="margin-top : 10px">Studied At : {{$user->profile->education}}</div>
                 @endif
                 @if ($user->profile->current_address)
-                    <div>Lives In {{$user->profile->current_address}}</div>
+                    <div style="margin-top : 10px">Lives In : {{$user->profile->current_address}}</div>
                 @endif
                 @if ($user->profile->from_address)
-                    <div>From {{$user->profile->from_address}} </diV>
+                    <div style="margin-top : 10px">From : {{$user->profile->from_address}} </diV>
                 @endif
                 @if ($user->profile->workplace)
-                    <div>Works At {{$user->profile->workplace}} </div>
+                    <div style="margin-top : 10px">Works At : {{$user->profile->workplace}} </div>
                 @endif
                 @if($user->profile->relationship)
-                <div>Relationship {{$user->profile->relationship}} </div>
+                <div style="margin-top : 10px">Relationship : {{$user->profile->relationship}} </div>
                 @endif
                 @if ($user->profile->hobbies)
-                    <div> Likes to {{$user->profile->hobbies}} </div>
+                    <div  style="margin-top : 10px"> Likes to {{$user->profile->hobbies}} </div>
                 @endif
                 </div>
 

@@ -22,10 +22,10 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <div class="relative flex items-top justify-center sm:items-center py-4 sm:pt-0">
             <div class="hidden fixed top-0 px-6 py-4 sm:block">
                 <form method="get" action="/search">
-                    <input type="text" name="name" style="width: 500px;height: 30px;">
+                    <input placeholder="Enter Username" type="text" name="name" style="width: 500px;height: 30px;">
                     <input type="submit" value="Search" style="background: grey;padding: 4px 20px;color: white">
                 </form>
             </div>
@@ -46,9 +46,17 @@
             @endif
         </div>
 
-        <div class="p-6 bg-white border-b border-gray-200">
+        <div class="p-6 bg-white border-b border-gray-200" style="width: 100%;margin: auto;">
+                <div style="float : right; margin-top : 50px; margin-right : 50px;border : 1px solid grey;padding : 10px;border-radius : 10px">
+                    <h1 style="font-size : 20px; border-bottom : 2px solid grey" >People You may know</h1>
+                    @foreach ($random_people as $people)
+                        <div style="margin-top : 10px">
+                            <a style="color : blue" href="/profile/{{$people->id}}">{{$people->name}}</a>
+                        </div>
+                    @endforeach
+                </div>
                 @foreach ($textPosts as $post)
-                    <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="p-6 bg-white border-b border-gray-200" style="width: 60%;margin: auto;">
                         <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight"> <a href="/text/{{$post->id}}">{{$post->caption}}</a> </h1>
                         <div>
                         {{$post->post_body}}
@@ -56,11 +64,13 @@
                         <div>Posted By : <a class="text-blue-500" href="/profile/{{$post->user->id}}">{{$post->user->name}}</a> </div>
                     </div>
                 @endforeach
-                </div>
+                
 
-            <div class="p-6 bg-white border-b border-gray-200">
+        </div>
+
+            <div class="p-6 bg-white border-b border-gray-200" style="width: 100%;margin: auto;">
             @foreach ($imagePosts as $post)
-                <div class="d-flex justify-content-center p-6 bg-white border-b border-gray-200">
+                <div class="d-flex justify-content-center p-6 bg-white border-b border-gray-200" style="width: 60%;margin: auto;">
                     <h1 class="mb-4 font-semibold text-xl text-gray-800 leading-tight"> <a href="/image/{{$post->id}}">{{$post->caption}}</a> </h1>
                     <div>
                     <img class="image_post" src="/storage/{{$post->image_url}}" alt="">
@@ -68,7 +78,7 @@
                     <div class="mt-5">Posted By : <a class="text-blue-500" href="/profile/{{$post->user->id}}">{{$post->user->name}}</a> </div>
                 </div>
             @endforeach
-            </div>
+        </div>
 
         @if (session('status'))
             <div id="snackbarsuccess" data-severity="success" data-status="{{session('status')}}" ></div>
